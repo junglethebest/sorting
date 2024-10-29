@@ -1,0 +1,13 @@
+1、安装Helib
+2、在本文件夹下命令行运行：sh mk.sh
+3、命令行运行：
+./sorting_circuit p d m q l N runs print_debug_info
+其中：
+p: 明文模
+d: slot个数
+m: 环
+q: 密文模
+l: 长度
+N: 排序数量
+runs: 进行几次测试
+print_debug_info: y/n，表示是不是要展示更多信息
