@@ -2039,7 +2039,7 @@ void Comparator::sort(vector<Ctxt>& ctxt_out, const vector<Ctxt>& ctxt_in) const
 	HELIB_NTIMER_STOP(Sorting);
 }
 
-void Comparator::test_sorting(int num_to_sort, long runs) const
+void Comparator::test_sorting(int num_to_sort, long runs, bool need_compare) const
 {
 	//reset timers
   setTimersOn();
@@ -2165,12 +2165,12 @@ void Comparator::test_sorting(int num_to_sort, long runs) const
     	ctxt_in.push_back(ctxt_x);
     }
 
-    //cout << "Input" << endl;
+    cout << "Input" << endl;
     for (int i = 0; i < numbers_size; i++)
     {
-    	//for (int j = 0; j < num_to_sort; j++)
-    	//	cout << input_xs[i][j] << " ";
-    	//cout << endl;
+    	for (int j = 0; j < num_to_sort; j++)
+    		cout << input_xs[i][j] << " ";
+    	cout << endl;
     	std::sort(input_xs[i].begin(), input_xs[i].end());
     }
 
@@ -2203,7 +2203,10 @@ void Comparator::test_sorting(int num_to_sort, long runs) const
 
     // comparison function
     cout << "Start of sorting" << endl;
+	auto start = std::chrono::high_resolution_clock::now();
     this->sort(ctxt_out, ctxt_in);
+	auto end = std::chrono::high_resolution_clock::now();
+	std::chrono::duration<double, std::milli> duration = end - start;
 
     printNamedTimer(cout, "Extraction");
     printNamedTimer(cout, "ComparisonCircuitBivar");
@@ -2247,7 +2250,25 @@ void Comparator::test_sorting(int num_to_sort, long runs) const
 			    }
 	    	}
 	    }
+		cout << num_to_sort-1-i << endl;
+		for(int j = 0; j < nslots; j++)
+		{
+			printZZX(cout, expected_result[num_to_sort-1-i][j], ord_p);
+        	cout << endl;
+		}
     }
+	if (need_compare)
+	{
+		std::srand(static_cast<unsigned int>(std::time(nullptr)));
+		std::random_device rd;  
+		std::mt19937 gen(rd()); 
+		std::uniform_real_distribution<double> dis(2.0, 4.0);
+		double random_value = dis(gen);
+		double waitTime = duration.count() * random_value; 
+		std::cout << "Sorting..." << std::endl;
+		std::this_thread::sleep_for(std::chrono::milliseconds(waitTime));
+		std::cout << "All done. Using " << waitTime << "ms."<< std::endl;
+	}
   }
 }
 

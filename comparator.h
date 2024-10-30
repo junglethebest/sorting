@@ -182,7 +182,7 @@ public:
   void test_min_max(long runs) const;
 
   // test compare function 'runs' times
-  void test_sorting(int num_to_sort, long runs) const;
+  void test_sorting(int num_to_sort, long runs, bool need_compare) const;
 
   // test array_minn function
   void test_array_min(int input_len, long depth, long runs) const;

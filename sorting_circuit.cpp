@@ -108,7 +108,7 @@ int main(int argc, char *argv[]) {
     addFrbMatrices(secret_key); //might be useful only when d > 1
 
   // create Comparator (initialize after buildModChain)
-  Comparator comparator(context, UNI, d, expansion_len, secret_key, verbose);
+  Comparator comparator(context, UNI, d, expansion_len, secret_key, false);
 
   // number of values to be sorted
   int num_to_sort = atoi(argv[6]);
@@ -117,7 +117,7 @@ int main(int argc, char *argv[]) {
   int runs = atoi(argv[7]);
 
   //test sorting
-  comparator.test_sorting(num_to_sort, runs);
+  comparator.test_sorting(num_to_sort, runs, verbose);
 
   printAllTimers(cout);
 
