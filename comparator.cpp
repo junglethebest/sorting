@@ -2063,7 +2063,8 @@ void Comparator::test_sorting(int num_to_sort, long runs, bool need_compare) con
   unsigned long ord_p = m_context.getOrdP();
 
   //amount of numbers in one ciphertext
-  unsigned long numbers_size = nslots / m_expansionLen;
+  //unsigned long numbers_size = nslots / m_expansionLen;
+	unsigned long numbers_size = 1;
 
   // number of slots occupied by encoded numbers
   unsigned long occupied_slots = numbers_size * m_expansionLen;
