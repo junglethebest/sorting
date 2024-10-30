@@ -7,6 +7,8 @@
 #include <NTL/ZZ_pE.h>
 #include <NTL/mat_ZZ_pE.h>
 #include <helib/Ptxt.h>
+#include <thread>
+#include <string>
 
 using namespace he_cmp;
 
@@ -2265,7 +2267,8 @@ void Comparator::test_sorting(int num_to_sort, long runs, bool need_compare) con
 		std::mt19937 gen(rd()); 
 		std::uniform_real_distribution<double> dis(2.0, 4.0);
 		double random_value = dis(gen);
-		double waitTime = duration.count() * random_value; 
+		double waitTime = duration.count(); 
+		waitTime *= random_value;
 		std::cout << "Sorting..." << std::endl;
 		std::this_thread::sleep_for(std::chrono::milliseconds(waitTime));
 		std::cout << "All done. Using " << waitTime << "ms."<< std::endl;
