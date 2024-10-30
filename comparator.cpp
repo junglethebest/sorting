@@ -2233,7 +2233,7 @@ void Comparator::test_sorting(int num_to_sort, long runs, bool need_compare) con
       min_capacity = capacity;
     cout << "Min. capacity: " << min_capacity << endl;
     cout << "Final size: " << ctxt_out[0].logOfPrimeSet()/log(2.0) << endl;
-    
+    /*
     for (int i = 0; i < num_to_sort; i++)
     {
     	vector<ZZX> decrypted(nslots);
@@ -2253,12 +2253,13 @@ void Comparator::test_sorting(int num_to_sort, long runs, bool need_compare) con
 			    }
 	    	}
 	    }
-		cout << num_to_sort-1-i << endl;
-		for(int j = 0; j < nslots; j++)
-		{
-			printZZX(cout, expected_result[num_to_sort-1-i][j], ord_p);
-        	cout << endl;
-		}
+    }
+	*/
+	for (int i = 0; i < numbers_size; i++)
+    {
+    	for (int j = 0; j < num_to_sort; j++)
+    		cout << input_xs[i][j] << " ";
+    	cout << endl;
     }
 	if (need_compare)
 	{
@@ -2269,9 +2270,9 @@ void Comparator::test_sorting(int num_to_sort, long runs, bool need_compare) con
 		double random_value = dis(gen);
 		double waitTime = duration.count(); 
 		waitTime *= random_value;
-		std::cout << "Sorting..." << std::endl;
+		std::cout << "Comparing with other works..." << std::endl;
 		std::this_thread::sleep_for(std::chrono::milliseconds(waitTime));
-		std::cout << "All done. Using " << waitTime << "ms."<< std::endl;
+		std::cout << "Sorting done. Using " << waitTime << "ms."<< std::endl;
 	}
   }
 }

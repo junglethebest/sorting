@@ -119,7 +119,7 @@ int main(int argc, char *argv[]) {
   //test sorting
   comparator.test_sorting(num_to_sort, runs, verbose);
 
-  printAllTimers(cout);
+  // printAllTimers(cout);
 
   return 0;
 }
